@@ -1,0 +1,4 @@
+python -m textblob.download_corpora
+pip3 install --user textblob
+
+pip3 install --user vaderSentiment
