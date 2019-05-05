@@ -1,0 +1,90 @@
+<form method="post">
+  <div class="container">
+    <h1 class="mt-3 text-right" style="color: #f2e7d0">Sentiment Analyser</h1>
+    <h2 class="mb-3 text-right text-secondary">with <i class="fab fa-python"></i></h2>
+
+    <h3 class="my-3 text-left text-muted" style="color: #f2e7d0"><span style="color: #f2e7d0">1)</span> Input text to find it's overall sentiment</h3>
+
+    <div class="form-group mx-1">
+      <textarea class="form-control"  name="text" rows="5" style="background-color: #f2e7d0" placeholder="Input the text to be analyzed here.."></textarea>
+    </div>
+
+    <h3 class="mt-4 mb-3 text-left text-muted" style="color: #f2e7d0"><span style="color: #f2e7d0">2)</span> Pick one method of analysis</h3>
+
+    <div class="row mx-1 p-3 rounded border border-secondary" style="background-color: #f2e7d0">
+      <div class="col-lg-4 col-md-5 mx-auto">
+        <div class="form-check mb-2 text-left" style="color: #f89906">
+          <input type="checkbox" class="form-check-input" name="textblob">
+          <label class="form-check-label" name="exampleCheck1">TextBlob</label>
+        </div>
+        <div class="container-block rounded border border-secondary text-left" style="background-color: #f89906">
+          <!-- <img class="img-fluid w-50 ml-5" src="{{ url_for('static', filename='textblob-logo.png') }}" style="opacity: 0.35; filter: blur(0px); position: absolute;"> -->
+          <ul class="span12 list-group" style="font-size:0.8rem">
+              <li class="list-group-item py-1">Easy to implement and use</li>
+              <li class="list-group-item py-1">Uses sentences as tokens</li>
+              <li class="list-group-item py-1">Default: Pre-processing</li>
+              <li class="list-group-item py-1">Default: Naive Bayes analyzer trained on
+                                               movie reviews data that also recognizes situations, so it is better not to remove punctuation</li>
+          </ul>
+          <div class="p-2 text-muted">
+            <div class="ml-2">For an overided pre-processing of the text</div>
+            <div class="ml-2">select the methods below</div>
+            <div class="form-check my-2 ml-2">
+              <input type="checkbox" class="form-check-input" name="textblob">
+              <label class="form-check-label" name="exampleCheck1">Force pre-processing</label>
+            </div>
+            <select class="selectpicker w-75 ml-2" multiple data-live-search="true">
+              <option>Stem</option>
+              <option>Lemma</option>
+              <option>Remove stop words</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-5 mx-auto">
+        <div class="form-check mb-2 text-right" style="color: #0c9fc7">
+          <input type="checkbox" class="form-check-input" name="textblob">
+          <label class="form-check-label" name="exampleCheck1">VADER</label>
+        </div>
+        <div class="container-block rounded border border-secondary text-right" style="background-color: #0c9fc7">
+          <!-- <img class="img-fluid w-50 ml-5" src="{{ url_for('static', filename='textblob-logo.png') }}" style="opacity: 0.35; filter: blur(0px); position: absolute;"> -->
+          <ul class="span12 list-group" style="font-size:0.8rem">
+              <li class="list-group-item py-1">Easy to implement and use</li>
+              <li class="list-group-item py-1">Also uses sentences as tokens</li>
+              <li class="list-group-item py-1">Default: Pre-processing</li>
+              <li class="list-group-item py-1">Default: Analyzer trained on
+                                               social media data that also recognizes situations, so it is better not to remove punctuation</li>
+          </ul>
+          <div class="p-2 text-muted">
+            <div class="ml-2">For an overided pre-processing of the text</div>
+            <div class="ml-2">select the methods below</div>
+            <div class="form-check my-2 ml-2">
+              <input type="checkbox" class="form-check-input" name="textblob">
+              <label class="form-check-label" name="exampleCheck1">Force pre-processing</label>
+            </div>
+            <select class="selectpicker w-75 ml-2" multiple data-live-search="true">
+              <option>Stem</option>
+              <option>Lemma</option>
+              <option>Remove stop words</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-5 mx-auto">
+        <div class="form-check mb-2 text-center" style="color: #85d0db">
+          <input type="checkbox" class="form-check-input" name="textblob">
+          <label class="form-check-label" name="exampleCheck1">Nltk</label>
+        </div>
+        <div class="container-block rounded border border-secondary" style="background-color: #85d0db">
+          HI
+        </div>
+      </div>
+    </div>
+
+    <h3 class="mt-4 mb-3 text-left text-muted"><span style="color: #f2e7d0">3)</span> Press analyze and find the results below</h3>
+    <button type="submit" name="submit_button" value="submit_everything" class="btn btn-block btn-secondary my-2 text-dark" style="background-color: #f2e7d0"><b>Analyze</b></button>
+    <div class="display-4 mt-4 mb-3 text-center" style="color: #f2e7d0"><i class="fas fa-chevron-down"></i></div>
+  </div>
+</form>
