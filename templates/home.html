@@ -24,50 +24,8 @@
     <!-- Here goes the form, which could be better implemented -->
     {% include 'form.html' %}
 
-    <div class="container">
-     {% if text %}
-      <div class="py-2 bg-secondary rounded border border-secondary">
-        <h3 class="mt-2 mb-4 text-center" style="color: #f2e7d0">The results are: <kbd class="text-success">Positive</kbd></h3>
-        <div class="row mt-2 mb-4">
-          <div class="col-4 mx-auto">
-            <ul class="list-group">
-              <li class="list-group-item py-1">
-                <h6 class="text-right text-dark" style="color: #f2e7d0">TextBlob text polarity: <kbd class="text-success">{{ text }}</kbd></h6>
-              </li>
-              <li class="list-group-item py-1">
-                <h6 class="text-right text-dark" style="color: #f2e7d0">Mean text polarity: <kbd class="text-success">{{ text }}</kbd></h6> 
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-6 mx-auto">
-            <ul class="list-group">
-              <li class="list-group-item py-1">
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </li>
-              <li class="list-group-item py-1">
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-     {% endif %}
-    </div>
-    
-
-            <!-- <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div> -->
-
-                  <!-- <small id="antext" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-
-                            <!-- <label for="exampleInputEmail1"></label> -->
+    <!-- Here are the results -->
+    {% include 'results.html' %}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS, then FontAwesome-->

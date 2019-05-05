@@ -43,8 +43,7 @@ def vader_method(paragraph):
     return my_polarity_mean, raw_data
 
 
-# A score between -0.05 and 0.05 is classified as neutral
-def score_str(score):
+def score_degree(score):
     if score >= 0.05: 
         return "Positive"
     elif score <= - 0.05: 
@@ -64,14 +63,14 @@ proposed by technological theorists fearful of
 artificial intelligence run rampant.
 ''' 
 
-score, raw_data = textblob_method(text)
-print("The overall vader score is: {:.5f} points, assesed {}".format(score, score_str(score)))
-for x in raw_data:
-    print(x)
+# score, raw_data = textblob_method(text)
+# print("The overall vader score is: {:.5f} points, assesed {}".format(score, score_degree(score)))
+# for x in raw_data:
+#     print(x)
 
-print('\n')
+# print('\n')
 
-score, raw_data = vader_method(text)
-print("The overall vader score is: {:.5f} points, assesed {}".format(score, score_str(score)))
-for x in raw_data:
-    print(x)
+# score, raw_data = vader_method(text)
+# print("The overall vader score is: {:.5f} points, assesed {}".format(score, score_degree(score)))
+# for x in raw_data:
+#     print(x)
