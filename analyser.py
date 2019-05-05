@@ -44,12 +44,20 @@ def vader_method(paragraph):
 
 
 def score_degree(score):
-    if score >= 0.05: 
-        return "Positive"
-    elif score <= - 0.05: 
-        return "Negative"
-    else: 
-        return "Neutral"
+    if 0.75 < score <= 1:
+        return 'Very positive'
+    elif 0.25 < score <= 0.75:
+        return 'Positive'
+    elif 0.05 < score <= 0.25:
+        return 'Pretty positive'
+    elif -0.05 < score <= 0.05:
+        return 'Neutral'
+    elif -0.25 < score <= -0.05:
+        return 'Pretty negative'
+    elif -0.75 < score <= -0.25:
+        return 'Negative'
+    elif -1 < score <= -0.75:
+        return 'Very negative'
 
 
 text = '''

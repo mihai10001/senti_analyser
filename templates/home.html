@@ -21,8 +21,17 @@
   </head>
   <body class="bg-dark">
 
+    <div class="container fixed-top rounded border-bottom border-secondary bg-dark text-right">
+      <div class="h2 mt-2" style="color: #f2e7d0">Sentiment Analyser <i class="fas fa-theater-masks"></i></div>
+      <div class="h3 mb-2 text-secondary">with <i class="fab fa-python"></i></div>
+    </div>
+
+    <div class="container text-dark my-5">empty</div>
+
     <!-- Here goes the form, which could be better implemented -->
-    {% include 'form.html' %}
+    <div class="container">
+      {% include 'form.html' %}
+    </div>
 
     <!-- Here are the results -->
     {% include 'results.html' %}
