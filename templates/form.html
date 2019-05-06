@@ -30,7 +30,7 @@
             <input type="radio" class="form-check-input" name="preprocess" value="textblob">
             <label class="form-check-label" name="label">Force pre-processing</label>
           </div>
-          <select class="selectpicker w-75 ml-2" multiple data-live-search="true">
+          <select class="selectpicker w-75 ml-2" name="preprocess-list" multiple data-live-search="true">
             <option>Uncapitalize</option>
             <option>Remove punctuation</option>
             <option>Remove stop words</option>
@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <div class="col-lg-4 col-md-6 h-100 mx-auto my-2">
+    <div class="col-lg-4 col-md-6 mx-auto my-2">
       <div class="form-check mb-2 text-right" style="color: #0c9fc7">
         <input type="radio" class="form-check-input" name="onemethod" value="vader">
         <label class="form-check-label" name="label">VADER</label>
@@ -62,7 +62,7 @@
             <input type="radio" class="form-check-input" name="preprocess" value="vader">
             <label class="form-check-label" name="label">Force pre-processing</label>
           </div>
-          <select class="selectpicker w-75 mr-2" multiple data-live-search="true">
+          <select class="selectpicker w-75 mr-2" name="preprocess-list" multiple data-live-search="true">
             <option>Uncapitalize</option>
             <option>Remove punctuation</option>
             <option>Remove stop words</option>
@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <div class="col-lg-4 col-md-6 h-100 mx-auto my-2">
+    <div class="col-lg-4 col-md-6 mx-auto my-2">
       <div class="form-check mb-2 text-center" style="color: #85d0db">
         <input type="radio" class="form-check-input" name="onemethod" value="nltk">
         <label class="form-check-label" name="label">NLTK</label>
@@ -84,7 +84,7 @@
             <li class="list-group-item py-1">It provides easy-to-use interfaces</li>
             <li class="list-group-item py-1">Tokenization is usually done by words</li>
             <li class="list-group-item py-1">Offers already trained analyzers</li>
-            <li class="list-group-item py-1">You can choose an analyzer and train it 
+            <li class="list-group-item py-1">You can choose an analyzer and train it
                                              yourself by using NTLK's machine learning
                                              algorithms</li>
         </ul>
@@ -95,6 +95,9 @@
   </div>
 
   <h3 class="mt-4 mb-3 text-left text-muted"><span style="color: #f2e7d0">3)</span> Press analyze and find the results below</h3>
-  <button type="submit" name="submit_button" value="submit_everything" class="btn btn-block btn-secondary my-2 text-dark" style="background-color: #f2e7d0"><b>Analyze</b></button>
+
+
+  <button type="submit" name="submit_button" value="submit_everything" class="btn btn-block btn-secondary text-dark" style="background-color: #f2e7d0"><b>Analyze</b></button>
+
   <div class="display-4 mt-4 mb-3 text-center" style="color: #f2e7d0"><i class="fas fa-chevron-down"></i></div>
 </form>

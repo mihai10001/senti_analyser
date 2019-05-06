@@ -3,125 +3,94 @@
   <div class="row mx-1 p-3 rounded border border-secondary" style="background-color: #f2e7d0">
 
     <div class="col-12 mx-auto mt-3 mb-4 p-2">
-      {% if pol >= 0.05 %}
-      <h2 class="text-center">The results are: <kbd class="text-success">{{ degree }}</kbd></h2>
-      {% elif pol <= 0.05 %}
-      <h2 class="text-center">The results are: <kbd class="text-danger">{{ degree }}</kbd></h2>
-      {% else %}
-      <h2 class="text-center">The results are: <kbd class="text-muted">{{ degree }}</kbd></h2>
-      {% endif %}
+      <h2 class="text-center">The results are: <kbd class="text-{{ color }}">{{ degree }}</kbd></h2>
     </div>
 
     {% if method == 'textblob' %}
     <div class="col-5 mx-auto my-1 p-2 bg-secondary rounded">
-      <h6 class="text-center mt-1">TextBlob text polarity: <span class="text-white">{{ pol/100 }}</span></h6>
-    </div>
-
-      {% if pol >= 0 %}
-      <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
-        <div class="progress">
-          <div class="progress-bar bg-success" role="progressbar" style="width: {{ pol }}%">{{ pol }}%</div>
-        </div>
-      </div>
-      {% elif pol < 0 %}
-      <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
-        <div class="progress">
-          <div class="progress-bar bg-danger" role="progressbar" style="width: {{ -pol }}%">{{ -pol }}%</div>
-        </div>
-      </div>
-      {% endif %}
-
-      <div class="col-5 mx-auto my-1 p-2 bg-secondary rounded">
-        <h6 class="text-center mt-1">TextBlob mean polarity: <span class="text-white">{{ mean_pol/100 }}</span></h6>
-      </div>
-
-      {% if mean_pol >= 0 %}
-      <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
-        <div class="progress">
-          <div class="progress-bar bg-success" role="progressbar" style="width: {{ mean_pol }}%">{{ mean_pol }}%</div>
-        </div>
-      </div>
-      {% elif mean_pol < 0 %}
-      <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
-        <div class="progress">
-          <div class="progress-bar bg-danger" role="progressbar" style="width: {{ -mean_pol }}%">{{ -mean_pol }}%</div>
-        </div>
-      </div>
-      {% endif %}
-
-    <div class="col-5 mx-auto my-1 p-2 bg-secondary rounded">
-      <h6 class="text-center mt-1">TextBlob subjectivity: <span class="text-white">{{ subj/100 }}</span></h6>
+      <h6 class="text-center mt-1">TextBlob text polarity: <span class="text-white">{{ pol }}</span></h6>
     </div>
     <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
       <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: {{ subj }}%;" aria-valuenow="{{ subj }}" aria-valuemin="0" aria-valuemax="100">{{ subj }}%</div>
+        <div class="progress-bar bg-{{ color }}" role="progressbar" style="width: {{ (pol*100)|abs }}%">{{ (pol*100)|abs }}%</div>
+      </div>
+    </div>
+
+    <div class="col-5 mx-auto my-1 p-2 bg-secondary rounded">
+      <h6 class="text-center mt-1">TextBlob mean polarity: <span class="text-white">{{ mean_pol }}</span></h6>
+    </div>
+    <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
+      <div class="progress">
+        <div class="progress-bar bg-{{ color }}" role="progressbar" style="width: {{ (mean_pol*100)|abs }}%">{{ (mean_pol*100)|abs }}%</div>
+      </div>
+    </div>
+
+    <div class="col-5 mx-auto my-1 p-2 bg-secondary rounded">
+      <h6 class="text-center mt-1">TextBlob subjectivity: <span class="text-white">{{ subj }}</span></h6>
+    </div>
+    <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: {{ (subj*100)|abs }}%">{{ (subj*100)|abs }}%</div>
       </div>
     </div>
     {% endif %}
 
     {% if method == 'vader' %}
     <div class="col-5 mx-auto my-1 p-2 bg-secondary rounded">
-      <h6 class="text-center mt-1">VADER text polarity: <span class="text-white">{{ pol/100 }}</span></h6>
-    </div>
-
-      {% if pol >= 0 %}
-      <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
-        <div class="progress">
-          <div class="progress-bar bg-success" role="progressbar" style="width: {{ pol }}%">{{ pol }}%</div>
-        </div>
-      </div>
-      {% elif pol < 0 %}
-      <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
-        <div class="progress">
-          <div class="progress-bar bg-danger" role="progressbar" style="width: {{ -pol }}%">{{ -pol }}%</div>
-        </div>
-      </div>
-      {% endif %}
-
-    <div class="col-5 mx-auto my-1 p-2 bg-secondary rounded">
-      <h6 class="text-center mt-1">VADER mean polarity: <span class="text-white">{{ mean_pol/100 }}</span></h6>
-    </div>
-
-      {% if mean_pol >= 0 %}
-      <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
-        <div class="progress">
-          <div class="progress-bar bg-success" role="progressbar" style="width: {{ mean_pol }}%">{{ mean_pol }}%</div>
-        </div>
-      </div>
-      {% elif mean_pol < 0 %}
-      <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
-        <div class="progress">
-          <div class="progress-bar bg-danger" role="progressbar" style="width: {{ -mean_pol }}%">{{ -mean_pol }}%</div>
-        </div>
-      </div>
-      {% endif %}
-
-    <div class="col-5 mx-auto my-1 p-2 bg-secondary rounded">
-      <h6 class="text-center mt-1">VADER pos: <span class="text-white">{{ pos/100 }}</span></h6>
+      <h6 class="text-center mt-1">VADER text polarity: <span class="text-white">{{ pol }}</span></h6>
     </div>
     <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
       <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: {{ pos }}%">{{ pos }}%</div>
+        <div class="progress-bar bg-{{ color }}" role="progressbar" style="width: {{ (pol*100)|abs }}%">{{ (pol*100)|abs }}%</div>
       </div>
     </div>
+
     <div class="col-5 mx-auto my-1 p-2 bg-secondary rounded">
-      <h6 class="text-center mt-1">VADER neg: <span class="text-white">{{ neg/100 }}</span></h6>
+      <h6 class="text-center mt-1">VADER mean polarity: <span class="text-white">{{ mean_pol }}</span></h6>
     </div>
     <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
       <div class="progress">
-        <div class="progress-bar bg-danger" role="progressbar" style="width: {{ neg }}%">{{ neg }}%</div>
+        <div class="progress-bar bg-{{ color }}" role="progressbar" style="width: {{ (mean_pol*100)|abs }}%">{{ (mean_pol*100)|abs }}%</div>
       </div>
     </div>
+
     <div class="col-5 mx-auto my-1 p-2 bg-secondary rounded">
-      <h6 class="text-center mt-1">VADER neu: <span class="text-white">{{ neu/100 }}</span></h6>
+      <h6 class="text-center mt-1">VADER positivity: <span class="text-white">{{ pos }}</span></h6>
     </div>
     <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
       <div class="progress">
-        <div class="progress-bar bg-dark" role="progressbar" style="width: {{ neu }}%">{{ neu }}%</div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: {{ pos*100 }}%">{{ pos*100 }}%</div>
+      </div>
+    </div>
+    <div class="col-5 mx-auto my-1 p-2 bg-secondary rounded">
+      <h6 class="text-center mt-1">VADER negativity: <span class="text-white">{{ neg }}</span></h6>
+    </div>
+    <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
+      <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar" style="width: {{ neg*100 }}%">{{ neg*100 }}%</div>
+      </div>
+    </div>
+    <div class="col-5 mx-auto my-1 p-2 bg-secondary rounded">
+      <h6 class="text-center mt-1">VADER neutrality: <span class="text-white">{{ neu }}</span></h6>
+    </div>
+    <div class="col-5 mx-auto my-1 p-3 bg-secondary rounded">
+      <div class="progress">
+        <div class="progress-bar bg-dark" role="progressbar" style="width: {{ neu*100 }}%">{{ neu*100 }}%</div>
       </div>
     </div>
     {% endif %}
-    
+
+    {% if advanced %}
+    <table>
+      {% for row in raw_data %}
+      <tr>
+        {% for element in row %}
+          <td>{{ element }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
 
   </div>
 </div>
