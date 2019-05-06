@@ -18,8 +18,9 @@ def home():
     if request.method == 'POST':
         if request.form['submit_button'] == 'submit_everything':
             text = request.form.get('text')
-            method = request.form.get('onemethod')
             preprocess = request.form.get('preprocess')
+            method = request.form.get('onemethod')
+            advanced = request.form.get('advanced')
 
             if preprocess:
                 preprocess_list = request.form.getlist('preprocess-list')
@@ -47,7 +48,7 @@ def home():
                 else:
                     color = 'dark'
 
-                return render_template('home.html', method=method, color=color, degree=degree, mean_pol=mean_polarity, pol=polarity, subj=subjectivity)
+                return render_template('home.html', method=method, color=color, degree=degree, mean_pol=mean_polarity, pol=polarity, subj=subjectivity, adv=advanced, raw=raw_data)
 
             elif method == 'vader':
                 overall_sentiment, mean_polarity, raw_data = vader_method(text)
@@ -62,10 +63,10 @@ def home():
                 else:
                     color = 'danger'
 
-                return render_template('home.html', method=method, color=color, degree=degree, mean_pol=mean_polarity, pol=polarity, pos=pos, neg=neg, neu=neu)
+                return render_template('home.html', method=method, color=color, degree=degree, mean_pol=mean_polarity, pol=polarity, pos=pos, neg=neg, neu=neu, adv=advanced, raw=raw_data)
 
             elif method == 'nltk':
-                return render_template('home.html', method=method)
+                return render_template('home.html', method=method, color=color, degree=degree, adv=advanced, raw=raw_data)
 
     return render_template('home.html')
 

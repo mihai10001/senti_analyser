@@ -27,7 +27,7 @@ def textblob_method(paragraph):
 
     overall_sentiment = [blob.sentiment.polarity, blob.sentiment.subjectivity]
     my_mean_sentiment = mean(sentence.sentiment.polarity for sentence in blob.sentences)
-    raw_data = [[sentence.raw.strip()[:15] + '...', sentence.polarity, sentence.subjectivity] for sentence in blob.sentences]
+    raw_data = [[sentence.raw.strip()[:20] + ' ...', sentence.polarity, sentence.subjectivity] for sentence in blob.sentences]
 
     return overall_sentiment, my_mean_sentiment, raw_data
 
@@ -53,7 +53,7 @@ def vader_method(paragraph):
 
     overall_sentiment = sid.polarity_scores(paragraph)
     my_mean_sentiment = mean(sid.polarity_scores(sentence)['compound'] for sentence in sentences)
-    raw_data = [[sentence.strip()[:15] + '...', sid.polarity_scores(sentence)] for sentence in sentences]
+    raw_data = [[sentence.strip()[:20] + ' ...', *sid.polarity_scores(sentence).values()] for sentence in sentences]
 
     return overall_sentiment, my_mean_sentiment, raw_data
 
