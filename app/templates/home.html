@@ -11,13 +11,19 @@
       height: 100%;
     }
 
+    div[id="select_textblob"]:hover,
+    div[id="select_vader"]:hover,
+    div[id="select_nltk"]:hover {
+        cursor: pointer;
+        background-color: #B1D270;
+    }
     </style>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
 
-    <title>Hello, world!</title>
+    <title>Sentiment Analyser</title>
   </head>
   <body class="bg-dark">
 
@@ -51,9 +57,29 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
     <script>
-    $(document).ready(function () {
-        $('.selectpicker').selectpicker();
-    })
+      $(document).ready(function () {
+          $('.selectpicker').selectpicker();
+          $('div[id="select_textblob"]').click(function (e)
+          {
+              var radio = $(this).find('input[name="onemethod"][value="textblob"]');
+              radio.prop("checked") == true ? radio.prop("checked", false) : radio.prop("checked", true)
+          });
+          $('div[id="select_vader"]').click(function (e)
+          {
+              var radio = $(this).find('input[name="onemethod"][value="vader"]');
+              radio.prop("checked") == true ? radio.prop("checked", false) : radio.prop("checked", true)
+          });
+          $('div[id="select_nltk"]').click(function (e)
+          {
+              var radio = $(this).find('input[name="onemethod"][value="nltk"]');
+              radio.prop("checked") == true ? radio.prop("checked", false) : radio.prop("checked", true)
+          });
+          $('input[name="preprocess"]').click(function (e)
+          {
+               e.stopPropagation();
+                   return true;
+          });
+      });
     </script>
   </body>
 </html>

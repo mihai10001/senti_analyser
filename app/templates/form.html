@@ -7,14 +7,14 @@
 
   <h3 class="mt-2 mb-3 text-left text-muted"><kbd style="color: #f2e7d0">2</kbd> Pick one method of analysis</h3>
 
-  <div class="row mx-1 p-3 rounded border border-secondary" style="background-color: #f2e7d0">
+  <div class="row mx-1 p-2 rounded border border-secondary" style="background-color: #f2e7d0">
 
-    <div class="col-lg-4 col-md-6 mx-auto my-2">
-      <div class="form-check mb-2 text-left">
-        <input type="radio" class="form-check-input bg-danger" name="onemethod" value="textblob">
-        <a href="https://textblob.readthedocs.io/en/dev/" style="color: #f89906"><label class="form-check-label h4" name="label">TextBlob</label></a>
+    <div class="col-lg-4 col-md-6 mx-auto my-2 py-2 rounded" id="select_textblob">
+      <div class="form-check mb-1 text-left">
+        <input type="radio" class="form-check-input" name="onemethod" value="textblob" style="transform: scale(1.3)">
+        <label class="form-check-label h4" name="label"><a href="https://textblob.readthedocs.io/en/dev/" style="color: #3CA6BD">TextBlob</a></label>
       </div>
-      <div class="container-block rounded border border-secondary text-left" style="height: 90%; background-color: #f89906">
+      <div class="container-block rounded border border-secondary text-left shadow" style="height: 90%; background-color: #3CA6BD">
         <!-- <img class="img-fluid w-50 ml-5" src="{{ url_for('static', filename='textblob-logo.png') }}" style="opacity: 0.35; filter: blur(0px); position: absolute;"> -->
         <ul class="span12 list-group" style="font-size:0.8rem">
             <li class="list-group-item py-1">Easy to implement and use</li>
@@ -27,7 +27,7 @@
           <div class="ml-2">For an overided pre-processing of the text</div>
           <div class="ml-2">select the methods below</div>
           <div class="form-check my-2 ml-2">
-            <input type="radio" class="form-check-input" name="preprocess" value="textblob">
+            <input type="checkbox" class="form-check-input" name="preprocess" value="textblob">
             <label class="form-check-label" name="label">Force pre-processing</label>
           </div>
           <select class="selectpicker w-75 ml-2" name="preprocess-list" multiple data-live-search="true">
@@ -41,12 +41,12 @@
       </div>
     </div>
 
-    <div class="col-lg-4 col-md-6 mx-auto my-2">
-      <div class="form-check mb-2 text-right">
-        <input type="radio" class="form-check-input" name="onemethod" value="vader">
-        <a href="http://www.nltk.org/howto/sentiment.html" style="color: #0c9fc7"><label class="form-check-label h4" name="label">VADER</label></a>
+    <div class="col-lg-4 col-md-6 mx-auto my-2 py-2 rounded" id="select_vader">
+      <div class="form-check mb-1 text-right">
+        <input type="radio" class="form-check-input" name="onemethod" value="vader" style="transform: scale(1.3)">
+        <label class="form-check-label h4" name="label"><a href="http://www.nltk.org/howto/sentiment.html" style="color: #FD8E09">VADER</a></label>
       </div>
-      <div class="container-block rounded border border-secondary text-right" style="height: 90%; background-color: #0c9fc7">
+      <div class="container-block rounded border border-secondary text-right shadow" style="height: 90%; background-color: #FD8E09">
         <!-- <img class="img-fluid w-50 ml-5" src="{{ url_for('static', filename='textblob-logo.png') }}" style="opacity: 0.35; filter: blur(0px); position: absolute;"> -->
         <ul class="span12 list-group" style="font-size:0.8rem">
             <li class="list-group-item py-1">Easy to implement and use</li>
@@ -59,7 +59,7 @@
           <div class="mr-2">For an overided pre-processing of the text</div>
           <div class="mr-2">select the methods below</div>
           <div class="form-check my-2 mr-2">
-            <input type="radio" class="form-check-input" name="preprocess" value="vader">
+            <input type="checkbox" class="form-check-input" name="preprocess" value="vader">
             <label class="form-check-label" name="label">Force pre-processing</label>
           </div>
           <select class="selectpicker w-75 mr-2" name="preprocess-list" multiple data-live-search="true">
@@ -73,18 +73,18 @@
       </div>
     </div>
 
-    <div class="col-lg-4 col-md-6 mx-auto my-2">
-      <div class="form-check mb-2 text-center">
-        <input type="radio" class="form-check-input" name="onemethod" value="nltk">
-        <a href="http://www.nltk.org/howto/sentiment.html" style="color: #85d0db"><label class="form-check-label h4" name="label">NLTK</label></a>
+    <div class="col-lg-4 col-md-6 mx-auto my-2 py-2 rounded" id="select_nltk">
+      <div class="form-check mb-1 text-center">
+        <input type="radio" class="form-check-input" name="onemethod" value="nltk" style="transform: scale(1.3)">
+        <label class="form-check-label h4" name="label"><a href="http://www.nltk.org/howto/sentiment.html" style="color: #FC6807">NLTK</a></label>
       </div>
-      <div class="container-block rounded border border-secondary text-center" style="background-color: #85d0db">
+      <div class="container-block rounded border border-secondary text-center shadow" style="background-color: #FC6807">
         <ul class="span12 list-group" style="font-size:0.8rem">
             <li class="list-group-item py-1">The Python standard library for NLP</li>
             <li class="list-group-item py-1">It provides easy-to-use interfaces</li>
             <li class="list-group-item py-1"><span class="text-danger">Tokenization</span> is usually done by <span class="text-danger">words</span></li>
             <li class="list-group-item py-1">Offers already trained analyzers</li>
-            <li class="list-group-item py-1">You can choose an analyzer and train it
+            <li class="list-group-item py-1">You can choose an analyzer and train it with any data
                                              yourself by using NTLK's machine learning
                                              algorithms</li>
         </ul>

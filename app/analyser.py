@@ -1,4 +1,3 @@
-from collections import OrderedDict
 from statistics import mean
 from nltk import tokenize
 
@@ -22,13 +21,12 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 # TextBlob has different ratings depending on the form of the word and therefore the input should not be stemmed or lemmatized
 # TextBlob uses sentences as tokens, so it's prefered not to remove punctuation as that affects TextBlob's polarity calculations
 
-
 def textblob_method(paragraph):
     blob = TextBlob(paragraph)
 
     overall_sentiment = [blob.sentiment.polarity, blob.sentiment.subjectivity]
     my_mean_sentiment = mean(sentence.sentiment.polarity for sentence in blob.sentences)
-    raw_data = [[sentence.raw.strip()[:20] + ' ...', sentence.polarity, sentence.subjectivity] for sentence in blob.sentences]
+    raw_data = [[sentence.raw.strip()[:30] + ' ...', sentence.polarity, sentence.subjectivity] for sentence in blob.sentences]
 
     return overall_sentiment, my_mean_sentiment, raw_data
 
@@ -47,7 +45,6 @@ def textblob_method(paragraph):
 # VADER has different ratings depending on the form of the word and therefore the input should not be stemmed or lemmatized
 # VADER uses sentences as tokens, so it's prefered not to remove punctuation as that affects VADER's polarity calculations
 
-
 def vader_method(paragraph):
     sid = SentimentIntensityAnalyzer()
     sentences = tokenize.sent_tokenize(paragraph)
@@ -55,7 +52,7 @@ def vader_method(paragraph):
     order_of_keys = ['compound', 'pos', 'neg', 'neu']
     overall_sentiment = sid.polarity_scores(paragraph)
     my_mean_sentiment = mean(sid.polarity_scores(sentence)['compound'] for sentence in sentences)
-    raw_data = [[sentence.strip()[:20] + ' ...', *[sid.polarity_scores(sentence)[key] for key in order_of_keys]] for sentence in sentences]
+    raw_data = [[sentence.strip()[:30] + '...', *[sid.polarity_scores(sentence)[key] for key in order_of_keys]] for sentence in sentences]
 
     return overall_sentiment, my_mean_sentiment, raw_data
 

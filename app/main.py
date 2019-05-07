@@ -1,12 +1,16 @@
 from flask import Flask, render_template, request
 
-#Preprocess
+# Preprocess
 from pre_process import remove_sensitivity, remove_punctuation, remove_stopwords, forced_lem, forced_stem
 
 # Analyzers
 from analyser import score_degree
 from analyser import textblob_method
 from analyser import vader_method
+
+# Nltk data and corpus
+import nltk
+nltk.download('punkt')
 
 # FLASK SETUP
 app = Flask(__name__)
@@ -68,7 +72,7 @@ def home():
 
                     return render_template('home.html', method=method, color=color, degree=degree, mean_pol=mean_polarity, pol=polarity, pos=pos, neg=neg, neu=neu, adv=advanced, raw=raw_data)
                 elif method == 'nltk':
-                    return render_template('home.html', method=method, color=color, degree=degree, adv=advanced, raw=raw_data)
+                    return render_template('home.html', error='Method not yet implemented. Come back in a week')
                 else:
                     return render_template('home.html', error='No analyse method chosen')
 
@@ -78,5 +82,6 @@ def home():
 
     return render_template('home.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    # Only for debugging while developing
+    app.run(host='0.0.0.0', debug=True, port=5000)

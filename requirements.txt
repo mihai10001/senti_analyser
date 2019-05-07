@@ -1,6 +1,0 @@
-python3 -m textblob.download_corpora
-python3 -m nltk.downloader stopwords
-
-pip3 install --user textblob
-
-pip3 install --user vaderSentiment
