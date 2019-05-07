@@ -1,4 +1,3 @@
-{% if method %}
 <div class="container mb-5">
   <div class="row mx-1 p-3 rounded border border-secondary" style="background-color: #f2e7d0">
 
@@ -85,7 +84,7 @@
       <h2 class=" mt-5 mb-4 text-center">Advanced view table:</h2>
 
       <table class="table table-dark rounded">
-        <thead>
+        <thead class="text-warning">
           {% if method == 'textblob' %}
           <tr>
             <th scope="col">Token</th>
@@ -97,10 +96,10 @@
           {% if method == 'vader' %}
           <tr>
             <th scope="col">Token</th>
+            <th scope="col">Compound</th>
+            <th scope="col">Positivity</th>
             <th scope="col">Negativity</th>
             <th scope="col">Neutrality</th>
-            <th scope="col">Positivity</th>
-            <th scope="col">Compound</th>
           </tr>
           {% endif %}
 
@@ -121,4 +120,3 @@
 
   </div>
 </div>
-{% endif %}

@@ -1,27 +1,27 @@
 <form method="post">
-  <h3 class="my-3 text-left text-muted" style="color: #f2e7d0"><span style="color: #f2e7d0">1)</span> Input text to find it's overall sentiment</h3>
+  <h3 class="mt-2 mb-3 text-left text-muted"><kbd style="color: #f2e7d0">1</kbd> Input text to find it's overall sentiment</h3>
 
   <div class="form-group mx-1">
-    <textarea class="form-control"  name="text" rows="5" style="background-color: #f2e7d0" placeholder="Input the text to be analyzed here.."></textarea>
+    <textarea class="form-control"  name="text" rows="5" maxlength="200" style="background-color: #f2e7d0" placeholder="Input the text to be analyzed here.."></textarea>
   </div>
 
-  <h3 class="mt-4 mb-3 text-left text-muted" style="color: #f2e7d0"><span style="color: #f2e7d0">2)</span> Pick one method of analysis</h3>
+  <h3 class="mt-2 mb-3 text-left text-muted"><kbd style="color: #f2e7d0">2</kbd> Pick one method of analysis</h3>
 
   <div class="row mx-1 p-3 rounded border border-secondary" style="background-color: #f2e7d0">
 
     <div class="col-lg-4 col-md-6 mx-auto my-2">
-      <div class="form-check mb-2 text-left" style="color: #f89906">
-        <input type="radio" class="form-check-input" name="onemethod" value="textblob">
-        <label class="form-check-label" name="label">TextBlob</label>
+      <div class="form-check mb-2 text-left">
+        <input type="radio" class="form-check-input bg-danger" name="onemethod" value="textblob">
+        <a href="https://textblob.readthedocs.io/en/dev/" style="color: #f89906"><label class="form-check-label h4" name="label">TextBlob</label></a>
       </div>
-      <div class="container-block rounded border border-secondary text-left" style="background-color: #f89906">
+      <div class="container-block rounded border border-secondary text-left" style="height: 90%; background-color: #f89906">
         <!-- <img class="img-fluid w-50 ml-5" src="{{ url_for('static', filename='textblob-logo.png') }}" style="opacity: 0.35; filter: blur(0px); position: absolute;"> -->
         <ul class="span12 list-group" style="font-size:0.8rem">
             <li class="list-group-item py-1">Easy to implement and use</li>
             <li class="list-group-item py-1">Uses <span class="text-danger">sentences</span> as <span class="text-danger">tokens</span></li>
             <li class="list-group-item py-1">Default: Pre-processing</li>
             <li class="list-group-item py-1">Default: Naive Bayes analyzer trained on
-                                             movie reviews data that also recognizes situations, so it is better not to remove punctuation</li>
+                                             movie reviews data that also recognizes situations, so it is better not to remove punctuation or capitalization</li>
         </ul>
         <div class="p-2 text-muted">
           <div class="ml-2">For an overided pre-processing of the text</div>
@@ -42,18 +42,18 @@
     </div>
 
     <div class="col-lg-4 col-md-6 mx-auto my-2">
-      <div class="form-check mb-2 text-right" style="color: #0c9fc7">
+      <div class="form-check mb-2 text-right">
         <input type="radio" class="form-check-input" name="onemethod" value="vader">
-        <label class="form-check-label" name="label">VADER</label>
+        <a href="http://www.nltk.org/howto/sentiment.html" style="color: #0c9fc7"><label class="form-check-label h4" name="label">VADER</label></a>
       </div>
-      <div class="container-block rounded border border-secondary text-right" style="background-color: #0c9fc7">
+      <div class="container-block rounded border border-secondary text-right" style="height: 90%; background-color: #0c9fc7">
         <!-- <img class="img-fluid w-50 ml-5" src="{{ url_for('static', filename='textblob-logo.png') }}" style="opacity: 0.35; filter: blur(0px); position: absolute;"> -->
         <ul class="span12 list-group" style="font-size:0.8rem">
             <li class="list-group-item py-1">Easy to implement and use</li>
             <li class="list-group-item py-1">Also uses <span class="text-danger">sentences</span> as <span class="text-danger">tokens</span></li>
             <li class="list-group-item py-1">Default: Pre-processing</li>
             <li class="list-group-item py-1">Default: Analyzer trained on
-                                             social media data that can also recognizes situations, so it is better not to remove punctuation or capitalization</li>
+                                             social media data that can also recognizes situations, emojis, so it is better not to remove punctuation or capitalization</li>
         </ul>
         <div class="p-2 text-muted">
           <div class="mr-2">For an overided pre-processing of the text</div>
@@ -74,9 +74,9 @@
     </div>
 
     <div class="col-lg-4 col-md-6 mx-auto my-2">
-      <div class="form-check mb-2 text-center" style="color: #85d0db">
+      <div class="form-check mb-2 text-center">
         <input type="radio" class="form-check-input" name="onemethod" value="nltk">
-        <label class="form-check-label" name="label">NLTK</label>
+        <a href="http://www.nltk.org/howto/sentiment.html" style="color: #85d0db"><label class="form-check-label h4" name="label">NLTK</label></a>
       </div>
       <div class="container-block rounded border border-secondary text-center" style="background-color: #85d0db">
         <ul class="span12 list-group" style="font-size:0.8rem">
@@ -94,13 +94,13 @@
 
   </div>
 
-  <h3 class="mt-4 mb-3 text-left text-muted"><span style="color: #f2e7d0">3)</span> Press analyze and find the results below</h3>
+  <h3 class="my-3 text-left text-muted"><kbd style="color: #f2e7d0">3</kbd> Press analyze and find the results below</h3>
 
-  <div class="form-check mb-2 text-center text-warning">
+  <button type="submit" name="submit_button" value="submit_everything" class="btn btn-block btn-secondary text-dark" style="background-color: #f2e7d0"><b>Analyze</b></button>
+  <div class="form-check h5 mt-2 text-center text-warning">
     <input type="checkbox" class="form-check-input" name="advanced" value="advanced">
     <label class="form-check-label" name="label">Advanced view</label>
   </div>
-  <button type="submit" name="submit_button" value="submit_everything" class="btn btn-block btn-secondary text-dark" style="background-color: #f2e7d0"><b>Analyze</b></button>
 
-  <div class="display-4 mt-4 mb-3 text-center" style="color: #f2e7d0"><i class="fas fa-chevron-down"></i></div>
+  <div class="display-4 mt-3 mb-2 text-center" style="color: #f2e7d0"><i class="fas fa-chevron-down"></i></div>
 </form>

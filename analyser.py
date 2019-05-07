@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from statistics import mean
 from nltk import tokenize
 
@@ -51,9 +52,10 @@ def vader_method(paragraph):
     sid = SentimentIntensityAnalyzer()
     sentences = tokenize.sent_tokenize(paragraph)
 
+    order_of_keys = ['compound', 'pos', 'neg', 'neu']
     overall_sentiment = sid.polarity_scores(paragraph)
     my_mean_sentiment = mean(sid.polarity_scores(sentence)['compound'] for sentence in sentences)
-    raw_data = [[sentence.strip()[:20] + ' ...', *sid.polarity_scores(sentence).values()] for sentence in sentences]
+    raw_data = [[sentence.strip()[:20] + ' ...', *[sid.polarity_scores(sentence)[key] for key in order_of_keys]] for sentence in sentences]
 
     return overall_sentiment, my_mean_sentiment, raw_data
 
