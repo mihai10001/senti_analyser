@@ -57,6 +57,21 @@ def vader_method(paragraph):
     return overall_sentiment, my_mean_sentiment, raw_data
 
 
+# Calculate the polarity of the paragraph usign an NLTK trained classifier
+# Classifier trained manually based on movie reviews data downloaded from NLTK
+# Classifier trained on words as tokens, so tokenization will be kept at word level
+# Classifier trained in order to give a pos/neg status about the word, based on the likelyhood of
+# that word being positive or negative in the given data set
+# My approach: calculate the mean of all words polarities, taking into account the ones that do not
+# appear in the data set
+
+# Features:
+# A whole lot of features
+def nltk_ml_method(paragraph):
+    pass
+
+
+
 def score_degree(score):
     if 0.75 <= score < 1:
         return 'Very positive'
