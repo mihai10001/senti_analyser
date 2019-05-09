@@ -1,5 +1,7 @@
 requests
 nltk
+scikit-learn
 textblob
 vaderSentiment
+
 

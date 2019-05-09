@@ -2,58 +2,26 @@
   <h3 class="mt-2 mb-3 text-left text-muted"><kbd style="color: #f2e7d0">1</kbd> Input text to find it's overall sentiment</h3>
 
   <div class="form-group mx-1">
-    <textarea class="form-control"  name="text" rows="5" style="background-color: #f2e7d0" placeholder="Input the text to be analyzed here.."></textarea>
+    <textarea class="form-control" name="text" rows="5" style="background-color: #f2e7d0" placeholder="Input the text to be analyzed here.."></textarea>
   </div>
 
   <h3 class="mt-2 mb-3 text-left text-muted"><kbd style="color: #f2e7d0">2</kbd> Pick one method of analysis</h3>
 
   <div class="row mx-1 p-2 rounded border border-secondary" style="background-color: #f2e7d0">
 
-    <div class="col-lg-4 col-md-6 mx-auto my-2 py-2 rounded" id="select_textblob">
-      <div class="form-check mb-1 text-left">
-        <input type="radio" class="form-check-input" name="onemethod" value="textblob" style="transform: scale(1.3)">
-        <label class="form-check-label h4" name="label"><a href="https://textblob.readthedocs.io/en/dev/" style="color: #3CA6BD">TextBlob</a></label>
-      </div>
-      <div class="container-block rounded border border-secondary text-left shadow" style="height: 90%; background-color: #3CA6BD">
-        <!-- <img class="img-fluid w-50 ml-5" src="{{ url_for('static', filename='textblob-logo.png') }}" style="opacity: 0.35; filter: blur(0px); position: absolute;"> -->
-        <ul class="span12 list-group" style="font-size:0.8rem">
-            <li class="list-group-item py-1">Easy to implement and use</li>
-            <li class="list-group-item py-1">Uses <span class="text-danger">sentences</span> as <span class="text-danger">tokens</span></li>
-            <li class="list-group-item py-1">Default: Pre-processing</li>
-            <li class="list-group-item py-1">Default: Naive Bayes analyzer trained on
-                                             movie reviews data that also recognizes situations, so it is better not to remove punctuation or capitalization</li>
-        </ul>
-        <div class="p-2 text-muted">
-          <div class="ml-2">For an overided pre-processing of the text</div>
-          <div class="ml-2">select the methods below</div>
-          <div class="form-check my-2 ml-2">
-            <input type="checkbox" class="form-check-input" name="preprocess" value="textblob">
-            <label class="form-check-label" name="label">Force pre-processing</label>
-          </div>
-          <select class="selectpicker w-75 ml-2" name="preprocess-list" multiple data-live-search="true">
-            <option>Uncapitalize</option>
-            <option>Remove punctuation</option>
-            <option>Remove stop words</option>
-            <option>Lemmatization</option>
-            <option>Stemming</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
     <div class="col-lg-4 col-md-6 mx-auto my-2 py-2 rounded" id="select_vader">
-      <div class="form-check mb-1 text-right">
-        <input type="radio" class="form-check-input" name="onemethod" value="vader" style="transform: scale(1.3)">
-        <label class="form-check-label h4" name="label"><a href="http://www.nltk.org/howto/sentiment.html" style="color: #FD8E09">VADER</a></label>
+      <div class="form-check mb-1 text-left">
+        <input type="radio" class="form-check-input" name="onemethod" value="vader" style="transform: scale(1.3)" checked="checked">
+        <label class="form-check-label h4" name="label"  style="color: #FD8E09">VADER (by NLTK)<a href="http://www.nltk.org/howto/sentiment.html" class="text-muted"> -goto- </a></label>
       </div>
-      <div class="container-block rounded border border-secondary text-right shadow" style="height: 90%; background-color: #FD8E09">
-        <!-- <img class="img-fluid w-50 ml-5" src="{{ url_for('static', filename='textblob-logo.png') }}" style="opacity: 0.35; filter: blur(0px); position: absolute;"> -->
+      <div class="container-block rounded border border-secondary text-left shadow" style="height: 90%; background-color: #FD8E09">
         <ul class="span12 list-group" style="font-size:0.8rem">
+            <li class="list-group-item py-1"><span class="font-weight-bold text-success">Pros</span>: Yields best accuracy and complete analysis</li>
             <li class="list-group-item py-1">Easy to implement and use</li>
-            <li class="list-group-item py-1">Also uses <span class="text-danger">sentences</span> as <span class="text-danger">tokens</span></li>
+            <li class="list-group-item py-1">Prefered to manually <span class="text-danger">tokenize</span> by <span class="text-danger">sentences</span> before analysing</li>
             <li class="list-group-item py-1">Default: Pre-processing</li>
             <li class="list-group-item py-1">Default: Analyzer trained on
-                                             social media data that can also recognizes situations, emojis, so it is better not to remove punctuation or capitalization</li>
+                                             social media data that can also recognizes context, emoticons, so it is better not to remove punctuation or capitalization</li>
         </ul>
         <div class="p-2 text-muted">
           <div class="mr-2">For an overided pre-processing of the text</div>
@@ -73,22 +41,68 @@
       </div>
     </div>
 
-    <div class="col-lg-4 col-md-6 mx-auto my-2 py-2 rounded" id="select_nltk">
+    <div class="col-lg-4 col-md-6 mx-auto my-2 py-2 rounded" id="select_textblob">
+      <div class="form-check mb-1 text-right">
+        <input type="radio" class="form-check-input" name="onemethod" value="textblob" style="transform: scale(1.3)">
+        <label class="form-check-label h4" name="label" style="color: #3CA6BD">TextBlob<a href="https://textblob.readthedocs.io/en/dev/" class="text-muted"> -goto- </a></label>
+      </div>
+      <div class="container-block rounded border border-secondary text-right shadow" style="height: 90%; background-color: #3CA6BD">
+        <!-- <img class="img-fluid w-50 ml-5" src="{{ url_for('static', filename='textblob-logo.png') }}" style="opacity: 0.35; filter: blur(0px); position: absolute;"> -->
+        <ul class="span12 list-group" style="font-size:0.8rem">
+            <li class="list-group-item py-1"><span class="font-weight-bold text-success">Pros</span>: Has a nice feature that analysis the subjectivity of the text</li>
+            <li class="list-group-item py-1">Easy to implement and use</li>
+            <li class="list-group-item py-1">Default: uses <span class="text-danger">sentences</span> as <span class="text-danger">tokens</span></li>
+            <li class="list-group-item py-1">Default: Pre-processing</li>
+            <li class="list-group-item py-1">Default: Naive Bayes analyzer trained on
+                                             movie reviews data that also recognizes context, so it is better not to remove punctuation or capitalization</li>
+        </ul>
+        <div class="p-2 text-muted">
+          <div class="ml-2">For an overided pre-processing of the text</div>
+          <div class="ml-2">select the methods below</div>
+          <div class="form-check my-2 ml-2">
+            <input type="checkbox" class="form-check-input" name="preprocess" value="textblob">
+            <label class="form-check-label" name="label">Force pre-processing</label>
+          </div>
+          <select class="selectpicker w-75 ml-2" name="preprocess-list" multiple data-live-search="true">
+            <option>Uncapitalize</option>
+            <option>Remove punctuation</option>
+            <option>Remove stop words</option>
+            <option>Lemmatization</option>
+            <option>Stemming</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-7 col-md-12 mx-auto my-2 py-2 rounded" id="select_nltk">
       <div class="form-check mb-1 text-center">
         <input type="radio" class="form-check-input" name="onemethod" value="nltk" style="transform: scale(1.3)">
-        <label class="form-check-label h4" name="label"><a href="http://www.nltk.org/howto/sentiment.html" style="color: #FC6807">NLTK</a></label>
+        <label class="form-check-label h4" name="label" style="color: #FF9505">NLTK<a href="http://www.nltk.org/howto/sentiment.html" class="text-muted"> -goto- </a></label>
       </div>
-      <div class="container-block rounded border border-secondary text-center shadow" style="background-color: #FC6807">
+      <div class="container-block rounded border border-secondary text-center shadow" style="background-color: #FF9505">
         <ul class="span12 list-group" style="font-size:0.8rem">
-            <li class="list-group-item py-1">The Python standard library for NLP</li>
+          <li class="list-group-item py-1"><span class="font-weight-bold text-success">Pros</span>: Very customizable, but also decently hard to master</li>
+            <li class="list-group-item py-1">The Python standard library for NLP, imported by other NLP related libraries</li>
             <li class="list-group-item py-1">It provides easy-to-use interfaces</li>
-            <li class="list-group-item py-1"><span class="text-danger">Tokenization</span> is usually done by <span class="text-danger">words</span></li>
-            <li class="list-group-item py-1">Offers already trained analyzers</li>
+            <li class="list-group-item py-1"><span class="text-danger">Tokenization</span> is usually chosen accordingly to the <span class="text-danger">data set</span> used to train the classifier</li>
             <li class="list-group-item py-1">You can choose an analyzer and train it with any data
                                              yourself by using NTLK's machine learning
                                              algorithms</li>
+            <li class="list-group-item py-1">By default, I chose an analyser and trained it on a movie reviews data set found online</li>
+            <li class="list-group-item py-1">Unfortunately, results are quite inconsistent. In this process I learned that a good data set is pretty hard to find, and that you need good methods in order to yield correct results</li>
+            <li class="list-group-item py-1">Default: Naive Bayes classifier (accuracy 68.97%), but you can choose another from the below list [-TODO-]</li>
         </ul>
-        NOT YET IMPLEMENTED
+        <div class="p-2 text-muted">
+          <div class="mr-2">Some pre-processing of the text enabled by default</div>
+          <div class="mr-2">You may change other settings but accuracy will probably drop</div>
+          <div class="form-check my-2 mr-2">
+            <input type="checkbox" class="form-check-input" name="preprocess" value="nltk" disabled="disabled" checked="checked">
+            <label class="form-check-label" name="label">Force pre-processing</label>
+          </div>
+          <select class="selectpicker w-75 mr-2" name="preprocess-list" multiple data-live-search="true">
+            <option>Remove punctuation</option>
+          </select>
+        </div>
       </div>
     </div>
 

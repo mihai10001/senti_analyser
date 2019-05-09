@@ -36,7 +36,7 @@ def forced_stem(text):
     return ' '.join(porter_stemmer.stem(word) for word in words)
 
 
-def pre_process(text, choices):
+def preprocess(text, choices):
     if 'Uncapitalize' in choices:
         text = remove_sensitivity(text)
     if 'Remove punctuation' in choices:

@@ -79,6 +79,16 @@
     </div>
     {% endif %}
 
+    {% if method == 'nltk' %}
+    <div class="col-8 mx-auto my-1 p-2 bg-secondary rounded">
+      <h6 class="text-center mt-1">NLTK text polarity (not so relevant): <span class="text-white">{{ pol }}</span></h6>
+    </div>
+
+    <div class="col-8 mx-auto my-1 p-2 bg-secondary rounded">
+      <h6 class="text-center mt-1">NLTK mean polarity (more accurate): <span class="text-white">{{ mean_pol }}</span></h6>
+    </div>
+    {% endif %}
+
     {% if adv %}
     <div class="container mx-4">
       <h2 class=" mt-5 mb-4 text-center">Advanced view table:</h2>
@@ -100,6 +110,13 @@
             <th scope="col">Positivity</th>
             <th scope="col">Negativity</th>
             <th scope="col">Neutrality</th>
+          </tr>
+          {% endif %}
+
+          {% if method == 'nltk' %}
+          <tr>
+            <th scope="col">Token</th>
+            <th scope="col">Polarity</th>
           </tr>
           {% endif %}
 

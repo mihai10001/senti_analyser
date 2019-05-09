@@ -5,7 +5,8 @@ from nltk import tokenize
 from textblob import TextBlob
 # VADER
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-# NLTK
+# NLTK Machine Learning
+from ml_classifier import get_pickle, classify
 
 
 # Calculate the polarity of the paragraph usign the TextBlob library
@@ -16,7 +17,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 # My approach: calculate the mean of all sentence polarities
 
 # Features:
-# Tokenizer: "If None, defaults to WordTokenizer()"
+# Tokenizer: based on sentences, assigns each sentence a polarity score
 # Analyzer:  "If None, defaults to PatternAnalyzer"
 # TextBlob has different ratings depending on the form of the word and therefore the input should not be stemmed or lemmatized
 # TextBlob uses sentences as tokens, so it's prefered not to remove punctuation as that affects TextBlob's polarity calculations
@@ -58,26 +59,34 @@ def vader_method(paragraph):
 
 
 # Calculate the polarity of the paragraph usign an NLTK trained classifier
-# Classifier trained manually based on movie reviews data downloaded from NLTK
-# Classifier trained on words as tokens, so tokenization will be kept at word level
-# Classifier trained in order to give a pos/neg status about the word, based on the likelyhood of
-# that word being positive or negative in the given data set
+# Classifiers trained manually based on a shorter in length movie reviews data set found online
+# Classifiers trained using the FreqDist() function 
+# Classifiers trained in order to give a pos/neg status about the paragraph, based on the matching
+# words between the paragraph and the positive/negative data set
 # My approach: calculate the mean of all words polarities, taking into account the ones that do not
 # appear in the data set
 
 # Features:
 # A whole lot of features
-def nltk_ml_method(paragraph):
-    pass
+def nltk_ml_method(paragraph, classifier_path='train_data/short_NaiveBayesClassifier'):
+    classifier = get_pickle(classifier_path)
+    sentences = tokenize.sent_tokenize(paragraph)
 
+    overall_sentiment = classify(paragraph, classifier)
+    if overall_sentiment == 0:
+        return 0, 0, []
+    my_mean_sentiment = mean(classify(sentence, classifier) for sentence in sentences)
+    raw_data = [[sentence.strip()[:30] + '...', classify(sentence, classifier)] for sentence in sentences]
+
+    return overall_sentiment, my_mean_sentiment, raw_data
 
 
 def score_degree(score):
-    if 0.75 <= score < 1:
+    if 0.75 < score <= 1:
         return 'Very positive'
-    elif 0.25 <= score < 0.75:
+    elif 0.25 < score <= 0.75:
         return 'Positive'
-    elif 0.05 <= score < 0.25:
+    elif 0.05 < score <= 0.25:
         return 'Pretty positive'
     elif -0.05 <= score < 0.05:
         return 'Neutral'
@@ -85,7 +94,7 @@ def score_degree(score):
         return 'Pretty negative'
     elif -0.75 <= score < -0.25:
         return 'Negative'
-    elif -1 <= score < -0.75:
+    elif -1 <= score < 0.75:
         return 'Very negative'
 
 
@@ -99,3 +108,5 @@ devastating of potential consequences, not unlike the grey goo scenario
 proposed by technological theorists fearful of
 artificial intelligence run rampant.
 '''
+
+nltk_ml_method('melodramatic but nice indeed, i loves it in my pussay')
