@@ -108,5 +108,3 @@ devastating of potential consequences, not unlike the grey goo scenario
 proposed by technological theorists fearful of
 artificial intelligence run rampant.
 '''
-
-nltk_ml_method('melodramatic but nice indeed, i loves it in my pussay')
