@@ -6,7 +6,7 @@ Has multiple methods, that can contain both pre-trained models or a self trained
 
 
 ### Implementation  
-SPA application made with Python, using the Flask framework in order to build the backend and serve static content (HTML pages)  
+Web application made with Python, using the Flask framework in order to build the backend and serve static content (HTML pages)  
 Uses known Python libraries for Natural Language Processing and sentiment analysis and detection like TextBlob, NLTK or NLTK Vader  
 Contains a self trained model based on data from a movie review data set  
 
